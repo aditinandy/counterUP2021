@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" integrity="sha512-d8F1J2kyiRowBB/8/pAWsqUl0wSEOkG5KATkVV4slfblq9VRQ6MyDZVxWl2tWd+mPhuCbpTB4M7uU/x9FlgQ9Q==" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="img"></div>
+            <div class="countdownBx">
+                <h2>Countdown to New Year <br><span>20<i>21</i></span></h2>
+                <div class="countdown" id="countdown">
+                    <div id="day">Na</div>
+                    <div id="hour">Na</div>
+                    <div id="min">Na</div>
+                    <div id="sec">Na</div>
+                </div>
+                <button id="btn">Click Me</button>
+                <!-- <button onclick="popUp">Click Me</button> -->
+<!-- <div id="off"><button onclick="popUp()">clicky</button></div>---->
+            </div>
+        </div>
+        
+        <!-- <div id="status"></div> -->
+
+<script>
+    const countDate = new Date('apr 29, 2021 12:15:00').getTime();
+
+    function newYear(){
+        const now = new Date().getTime();
+        gap = countDate - now;
+
+        const sec = 1000;
+        const min = sec * 60;
+        const hr = min * 60;
+        const dy = hr * 24;
+
+        var d = Math.floor(gap / (dy));
+        var h = Math.floor((gap % (dy)) / (hr));
+        var m = Math.floor((gap % (hr)) / (min));
+        var s = Math.floor((gap % (min)) / (sec));
+
+        document.getElementById('day').innerText = d;
+        document.getElementById('hour').innerText = h;
+        document.getElementById('min').innerText = m;
+        document.getElementById('sec').innerText = s;
+
+        
+        var countDownfunction = setInterval(function() {
+        // newYear();
+        if(d <= 0 && h <= 0 && m <= 0 && s <= 0){
+            setInterval(countDownfunction);
+            // document.getElementById('countdown').innerHTML = "EXPIRED";
+            document.getElementById('countdown').innerHTML = "<h2>Countdown Completed!</h2>";
+            // document.getElementById('countdown').innerHTML += '<button id="btn">Click Me</button>';
+            // document.getElementById('off').innerText += val;
+            
+            let a = document.getElementById("btn");
+            a.addEventListener("click", popUp);
+
+            function popUp(){
+                
+                    // var email = prompt("Put your valid Email : ");
+                    // alert("Check ur Mail!");
+                    // document.write(`Check ur ${email}`);
+                    window.location = "magic.html";
+                    // alert('happy new year');
+                 
+                
+            }// don't call that function in btn events or click events
+
+//             
+            
+            // var email = prompt("Put your valid Email : ");
+            // alert('Check your Mail!');
+            
+            
+            // document.write(email);
+        }
+        // if(s < 0) {
+        //     setInterval(countDownfunction);
+        //     document.getElementById('countdown').innerHTML = "EXPIRED";
+        //     // element.innerHTML = '<h2>Countdown completed!</h2>';
+        //     // element.innerHTML = '<a href = "#">click here now!</a>';
+        // }
+        }, 1000)
+
+        
+
+    // function countDown(s, elem){
+    //     var element = document.getElementById(elem);
+    //     element.innerHTML = "please wait for "+s+" seconds";
+    //     if(s < 1) {
+    //         clearTimeout(timer);
+    //         element.innerHTML = '<h2>Countdown completed!</h2>';
+    //         element.innerHTML = '<a href = "#">click here now!</a>'
+    //     }
+    //     s--;
+    //     var timer = setTimeout('countDown('+s+', "'+elem+'")', 1000);
+    // };
+
+    // countDown(10, "status");
+
+
+
+    }
+
+    setInterval(function() {
+        newYear();
+    })
+    
+
+    // var countDownfunction = setInterval(function() {
+    //     newYear();
+    //     // if(gap < 0){
+    //     //     clearInterval(countDownfunction);
+    //     //     document.getElementById('countdown').innerHTML = "EXPIRED";
+    //     // }
+    //     if(s < 1) {
+    //         clearTimeout(countDownFunction);
+    //         element.innerHTML = '<h2>Countdown completed!</h2>';
+    //         element.innerHTML = '<a href = "#">click here now!</a>'
+    //     }
+    // }, 1000)
+
+    // function countDown(secs, elem){
+    //     var element = document.getElementById(elem);
+    //     element.innerHTML = "please wait for "+secs+" seconds";
+    //     if(secs < 1) {
+    //         clearTimeout(timer);
+    //         element.innerHTML = '<h2>Countdown completed!</h2>';
+    //         element.innerHTML = '<a href = "#">click here now!</a>'
+    //     }
+    //     secs--;
+    //     var timer = setTimeout('countDown('+secs+', "'+elem+'")', 1000);
+    // };
+
+// countDown(10, "status");
+
+
+</script>
+
+</body>
+</html>
